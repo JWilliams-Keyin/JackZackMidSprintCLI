@@ -145,6 +145,14 @@ public class RESTClient {
         return aircrafts;
     }
 
+    public String getServerURL() {
+        return serverURL;
+    }
+
+    public void setServerURL(String serverURL) {
+        this.serverURL = serverURL;
+    }
+
     public HttpClient getHttpClient() {
         if (httpClient == null) {
             httpClient = HttpClient.newHttpClient();
