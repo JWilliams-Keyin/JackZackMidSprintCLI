@@ -21,4 +21,31 @@ import java.util.List;
 public class RESTClient {
     private String serverURL;
     private HttpClient httpClient;
+
+    public String getResponseFromHttpRequest() {
+        String responseBody = "";
+        HttpRequest httpRequest = HttpRequest.newBuilder().uri(URI.create(serverURL)).build();
+
+        try {
+            HttpResponse<String> httpResponse = getHttpClient().send(httpRequest, HttpResponse.BodyHandlers.ofString());
+
+            if (httpResponse.statusCode() != 200) {
+                System.out.println("Error Status Code: " + httpResponse.statusCode());
+            }
+
+            responseBody = httpResponse.body();
+        } catch (IOException | InterruptedException error) {
+            error.printStackTrace();
+        }
+
+        return responseBody;
+    }
+
+    public HttpClient getHttpClient() {
+        if (httpClient == null) {
+            httpClient = HttpClient.newHttpClient();
+        }
+
+        return httpClient;
+    }
 }
