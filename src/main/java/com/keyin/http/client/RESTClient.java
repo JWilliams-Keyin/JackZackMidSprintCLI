@@ -160,4 +160,8 @@ public class RESTClient {
 
         return httpClient;
     }
+
+    public void setHttpClient(HttpClient httpClient) {
+        this.httpClient = httpClient;
+    }
 }
