@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FlightsCLITest {
 
-    // Stub class to simulate RESTClient behavior
     private static class TestRESTClient extends RESTClient {
         @Override
         public List<Airport> getAirportsByCity() {
