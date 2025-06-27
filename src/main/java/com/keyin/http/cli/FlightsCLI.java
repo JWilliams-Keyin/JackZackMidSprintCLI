@@ -89,14 +89,12 @@ public class FlightsCLI {
     }
 
     public static void main(String[] args) {
-        if (args.length == 0) {
-            System.out.println("Usage: java FlightCLI <server_base_url>");
-            return;
-        }
 
-        String baseURL = args[0];
+
+        String serverURL = "http://localhost:8080/airport";
+
         FlightsCLI cli = new FlightsCLI();
-        cli.getRestClient().setServerURL(baseURL);
+        cli.getRestClient().setServerURL(serverURL);
 
         cli.airportsByCityReport();
         cli.aircraftByPassengerReport();
