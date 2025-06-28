@@ -59,16 +59,24 @@ public class FlightsCLITest {
         }
 
         @Override
-        public List<Airport> getAirportsByAircraft() {
-            Airport airport1 = new Airport();
-            airport1.setAirportName("AirportA");
-            airport1.setAirportCode("AA");
+        public List<Aircraft> getAirportsByAircraft() {
+            Airport airport1 = new Airport("Airport1", "AJS");
+            List<Airport> airportsList1 = new ArrayList<>();
+            airportsList1.add(airport1);
 
-            Airport airport2 = new Airport();
-            airport2.setAirportName("AirportB");
-            airport2.setAirportCode("BB");
+            Aircraft aircraft1 = new Aircraft();
+            aircraft1.setAircraftType("AircraftA");
+            aircraft1.setAircraftAirports(airportsList1);
 
-            return Arrays.asList(airport1, airport2);
+            Airport airport2 = new Airport("Airport2", "ABS");
+            List<Airport> airportsList2 = new ArrayList<>();
+            airportsList2.add(airport2);
+
+            Aircraft aircraft2 = new Aircraft();
+            aircraft2.setAircraftType("AircraftB");
+            aircraft2.setAircraftAirports(airportsList2);
+
+            return Arrays.asList(aircraft1, aircraft2);
         }
 
         @Override
@@ -111,8 +119,7 @@ public class FlightsCLITest {
 
         String result = flightsCLI.airportsByAircraftReport();
 
-        assertTrue(result.contains("AirportA (AA)"));
-        assertTrue(result.contains("AirportB (BB)"));
+        assertTrue(result.contains("Airports by Aircraft:\nAircraftA [Airport1 (AJS)]\nAircraftB [Airport2 (ABS)]\n"));
     }
 
     @Test

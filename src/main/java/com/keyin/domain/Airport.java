@@ -51,5 +51,9 @@ public class Airport {
     public void setAirportCity(City airportCity) {
         this.airportCity = airportCity;
     }
+
+    public String toString() {
+        return airportName + " (" + airportCode + ")";
+    }
 }
 
