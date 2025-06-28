@@ -48,7 +48,7 @@ public class FlightsCLITest {
 
             Passenger passenger2 = new Passenger("Test", "Woman", "0987654321");
             List<Passenger> passengerList2 = new ArrayList<>();
-            passengerList1.add(passenger2);
+            passengerList2.add(passenger2);
 
             Aircraft aircraft2 = new Aircraft();
             aircraft2.setAircraftType("TypeY");
@@ -80,16 +80,34 @@ public class FlightsCLITest {
         }
 
         @Override
-        public List<Airport> getAirportsByPassengers() {
-            Airport airport1 = new Airport();
-            airport1.setAirportName("AirportX");
-            airport1.setAirportCode("XX");
+        public List<Aircraft> getAirportsByPassengers() {
+            Passenger passenger1 = new Passenger("Joe", "Test", "1234567890");
+            List<Passenger> passengerList1 = new ArrayList<>();
+            passengerList1.add(passenger1);
 
-            Airport airport2 = new Airport();
-            airport2.setAirportName("AirportY");
-            airport2.setAirportCode("YY");
+            Airport airport1 = new Airport("AirportX", "XX");
+            List<Airport> airportsList1 = new ArrayList<>();
+            airportsList1.add(airport1);
 
-            return Arrays.asList(airport1, airport2);
+            Aircraft aircraft1 = new Aircraft();
+            aircraft1.setAircraftType("Aircraft1");
+            aircraft1.setAircraftPassengers(passengerList1);
+            aircraft1.setAircraftAirports(airportsList1);
+
+            Passenger passenger2 = new Passenger("Mallory", "Test", "0987654321");
+            List<Passenger> passengerList2 = new ArrayList<>();
+            passengerList2.add(passenger2);
+
+            Airport airport2 = new Airport("AirportY", "YY");
+            List<Airport> airportsList2 = new ArrayList<>();
+            airportsList2.add(airport2);
+
+            Aircraft aircraft2 = new Aircraft();
+            aircraft2.setAircraftType("Aircraft2");
+            aircraft2.setAircraftPassengers(passengerList2);
+            aircraft2.setAircraftAirports(airportsList2);
+
+            return Arrays.asList(aircraft1, aircraft2);
         }
     }
 

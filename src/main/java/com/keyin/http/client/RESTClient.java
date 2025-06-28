@@ -104,8 +104,8 @@ public class RESTClient {
         return aircraft;
     }
 
-    public List<Airport> getAirportsByPassengers() {
-        List<Airport> airports = new ArrayList<Airport>();
+    public List<Aircraft> getAirportsByPassengers() {
+        List<Aircraft> aircraft = new ArrayList<Aircraft>();
         HttpRequest httpRequest = HttpRequest.newBuilder().uri(URI.create(serverURL)).build();
 
         try {
@@ -117,12 +117,12 @@ public class RESTClient {
                 System.out.println("Error Status Code: " + httpResponse.statusCode());
             }
 
-            airports = buildAirportListFromHttpResponse(httpResponse.body());
+            aircraft = buildAircraftListFromHttpResponse(httpResponse.body());
         } catch (IOException | InterruptedException error) {
             error.printStackTrace();
         }
 
-        return airports;
+        return aircraft;
     }
 
     public List<Airport> buildAirportListFromHttpResponse(String httpResponse) throws JsonProcessingException {

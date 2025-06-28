@@ -66,13 +66,13 @@ public class FlightsCLI {
     }
 
     public String airportsByPassengerReport() {
-        List<Airport> airports = restClient.getAirportsByPassengers();
+        List<Aircraft> aircrafts = restClient.getAirportsByPassengers();
 
         StringBuilder report = new StringBuilder();
         report.append("Airports used by Passengers:\n");
 
-        for (Airport airport : airports) {
-            report.append(airport.getAirportName()).append(" (").append(airport.getAirportCode()).append(")\n");
+        for (Aircraft aircraft : aircrafts) {
+            report.append(aircraft.getAircraftPassengers().toString()).append(" ").append(aircraft.getAircraftAirports().toString()).append("\n");
         }
 
         String output = report.toString();
@@ -101,9 +101,6 @@ public class FlightsCLI {
         cli.getRestClient().setServerURL(serverURL);
         cli.aircraftByPassengerReport();
         cli.airportsByAircraftReport();
-
-        serverURL = "http://localhost:8080/airport";
-        cli.getRestClient().setServerURL(serverURL);
         cli.airportsByPassengerReport();
     }
 }
