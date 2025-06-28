@@ -42,7 +42,7 @@ public class FlightsCLI {
         report.append("Aircraft by Passenger:\n");
 
         for (Aircraft ac : aircrafts) {
-            report.append(ac.getAircraftType()).append(" (").append(ac.getAirlineName()).append(")\n");
+            report.append(ac.getAircraftPassengers().toString()).append(" ").append(ac.getAircraftType()).append(" (").append(ac.getAirlineName()).append(")\n");
         }
 
         String output = report.toString();
@@ -95,9 +95,14 @@ public class FlightsCLI {
 
         FlightsCLI cli = new FlightsCLI();
         cli.getRestClient().setServerURL(serverURL);
-
         cli.airportsByCityReport();
+
+        serverURL = "http://localhost:8080/aircraft";
+        cli.getRestClient().setServerURL(serverURL);
         cli.aircraftByPassengerReport();
+
+        serverURL = "http://localhost:8080/airport";
+        cli.getRestClient().setServerURL(serverURL);
         cli.airportsByAircraftReport();
         cli.airportsByPassengerReport();
     }
