@@ -66,5 +66,9 @@ public class Passenger {
     public void setAircraft(List<Aircraft> aircraft) {
         this.aircraft = aircraft;
     }
+
+    public String toString() {
+        return firstName + " " + lastName;
+    }
 }
 
